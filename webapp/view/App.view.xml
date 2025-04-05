@@ -1,0 +1,99 @@
+<mvc:View
+    controllerName="com.vacaciones.app.controller.App"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:f="sap.f"
+    xmlns:core="sap.ui.core"
+    displayBlock="true"
+    height="100%">
+    <App id="app">
+        <pages>
+            <Page
+                id="mainPage"
+                showHeader="true"
+                title="{i18n>appTitle}"
+                class="sapUiContentPadding">
+                <customHeader>
+                    <Toolbar>
+                        <Button
+                            icon="sap-icon://nav-back"
+                            press=".onNavBack"
+                            visible="{= ${device>/system/phone} }"/>
+                        <Title text="{i18n>appTitle}" level="H2"/>
+                        <ToolbarSpacer/>
+                        <IconTabHeader
+                            id="iconTabHeader"
+                            selectedKey="{/selectedTab}"
+                            select=".onTabSelect"
+                            mode="Inline"
+                            backgroundDesign="Transparent">
+                            <items>
+                                <IconTabFilter
+                                    key="absences"
+                                    text="{i18n>tabAbsences}"/>
+                                <IconTabFilter
+                                    key="calendar"
+                                    text="{i18n>tabCalendar}"/>
+                                <IconTabFilter
+                                    key="team"
+                                    text="{i18n>tabTeam}"/>
+                                <IconTabFilter
+                                    key="balance"
+                                    text="{i18n>tabBalance}"/>
+                                <IconTabFilter
+                                    key="requests"
+                                    text="{i18n>tabRequests}"/>
+                                <IconTabFilter
+                                    key="reports"
+                                    text="{i18n>tabReports}"/>
+                                <IconTabFilter
+                                    key="admin"
+                                    text="{i18n>tabAdmin}"/>
+                            </items>
+                        </IconTabHeader>
+                        <ToolbarSpacer/>
+                        <SearchField width="auto" search=".onSearch"/>
+                        <Button icon="sap-icon://settings" press=".onSettingsPress"/>
+                        <Button icon="sap-icon://person-placeholder" press=".onUserPress"/>
+                    </Toolbar>
+                </customHeader>
+                <content>
+                    <NavContainer id="navContainer">
+                        <!-- El contenido se cargará dinámicamente según la pestaña seleccionada -->
+                    </NavContainer>
+                </content>
+                <footer>
+                    <Toolbar>
+                        <ToolbarSpacer/>
+                        <ObjectStatus
+                            title="{i18n>availableDays}"
+                            text="{/counters/available}d"
+                            state="Success"
+                            icon="sap-icon://calendar"/>
+                        <ObjectStatus
+                            title="{i18n>totalDays}"
+                            text="{/counters/total}d"
+                            state="Information"
+                            icon="sap-icon://calendar"/>
+                        <ObjectStatus
+                            title="{i18n>usedDays}"
+                            text="{/counters/used}d"
+                            state="Warning"
+                            icon="sap-icon://calendar"/>
+                        <ObjectStatus
+                            title="{i18n>pendingDays}"
+                            text="{/counters/pending}d"
+                            state="Error"
+                            icon="sap-icon://calendar"/>
+                        <ToolbarSpacer/>
+                        <Button
+                            type="Emphasized"
+                            text="{i18n>requestAbsence}"
+                            icon="sap-icon://add"
+                            press=".onRequestAbsence"/>
+                    </Toolbar>
+                </footer>
+            </Page>
+        </pages>
+    </App>
+</mvc:View>

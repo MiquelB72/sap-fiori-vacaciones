@@ -1,0 +1,126 @@
+<mvc:View
+    controllerName="com.vacaciones.app.controller.Request"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:core="sap.ui.core"
+    xmlns:unified="sap.ui.unified"
+    height="100%">
+    <Page
+        title="{i18n>newAbsenceRequest}"
+        showNavButton="true"
+        navButtonPress=".onNavBack">
+        <content>
+            <f:SimpleForm
+                editable="true"
+                layout="ResponsiveGridLayout"
+                labelSpanXL="4"
+                labelSpanL="4"
+                labelSpanM="4"
+                labelSpanS="12"
+                adjustLabelSpan="false"
+                emptySpanXL="0"
+                emptySpanL="0"
+                emptySpanM="0"
+                emptySpanS="0"
+                columnsXL="2"
+                columnsL="2"
+                columnsM="1"
+                singleContainerFullSize="false">
+                <f:content>
+                    <Label text="{i18n>absenceType}" required="true"/>
+                    <Select
+                        id="absenceTypeSelect"
+                        items="{/absenceTypes}"
+                        selectedKey="{viewModel>/request/absenceTypeId}"
+                        change=".onAbsenceTypeChange"
+                        required="true">
+                        <core:Item key="{id}" text="{description}"/>
+                    </Select>
+                    
+                    <Label text="{i18n>startDate}" required="true"/>
+                    <DatePicker
+                        id="startDatePicker"
+                        value="{viewModel>/request/startDate}"
+                        valueFormat="yyyy-MM-dd"
+                        displayFormat="long"
+                        change=".onDateChange"
+                        required="true"/>
+                    
+                    <Label text="{i18n>endDate}" required="true"/>
+                    <DatePicker
+                        id="endDatePicker"
+                        value="{viewModel>/request/endDate}"
+                        valueFormat="yyyy-MM-dd"
+                        displayFormat="long"
+                        change=".onDateChange"
+                        required="true"/>
+                    
+                    <Label text="{i18n>totalDays}"/>
+                    <Text text="{viewModel>/request/totalDays} {i18n>workingDays}"/>
+                    
+                    <Label text="{i18n>comments}"/>
+                    <TextArea
+                        value="{viewModel>/request/comments}"
+                        rows="4"
+                        width="100%"/>
+                    
+                    <Label text="{i18n>attachment}" visible="{viewModel>/request/requiresAttachment}"/>
+                    <VBox visible="{viewModel>/request/requiresAttachment}">
+                        <unified:FileUploader
+                            id="fileUploader"
+                            name="myFileUpload"
+                            uploadUrl="upload/"
+                            width="100%"
+                            tooltip="{i18n>attachmentTooltip}"
+                            placeholder="{i18n>selectFile}"
+                            change=".onFileChange"/>
+                        <Text
+                            text="{i18n>attachmentHint}"
+                            class="sapUiTinyMarginTop"/>
+                    </VBox>
+                    
+                    <Label text="{i18n>approver}"/>
+                    <Select
+                        id="approverSelect"
+                        selectedKey="{viewModel>/request/approverId}">
+                        <core:Item key="MANAGER1" text="Juan Pérez (Responsable)"/>
+                        <core:Item key="MANAGER2" text="María García (Directora)"/>
+                    </Select>
+                </f:content>
+            </f:SimpleForm>
+            
+            <Panel
+                headerText="{i18n>calendarPreview}"
+                expandable="true"
+                expanded="true"
+                class="sapUiResponsiveMargin">
+                <unified:Calendar
+                    id="calendarPreview"
+                    intervalSelection="true"
+                    months="1"
+                    startDate="{viewModel>/request/startDate}"
+                    select=".onCalendarSelect">
+                    <unified:specialDates>
+                        <unified:SpecialDate
+                            startDate="{viewModel>/request/startDate}"
+                            endDate="{viewModel>/request/endDate}"
+                            type="Type01"/>
+                    </unified:specialDates>
+                </unified:Calendar>
+            </Panel>
+        </content>
+        <footer>
+            <Toolbar>
+                <ToolbarSpacer/>
+                <Button
+                    text="{i18n>cancel}"
+                    press=".onCancelPress"/>
+                <Button
+                    text="{i18n>submitRequest}"
+                    type="Emphasized"
+                    press=".onSubmitPress"/>
+            </Toolbar>
+        </footer>
+    </Page>
+</mvc:View>

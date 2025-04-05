@@ -1,0 +1,129 @@
+{
+    "_version": "1.12.0",
+    "sap.app": {
+        "id": "com.vacaciones.app",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "applicationVersion": {
+            "version": "1.0.0"
+        },
+        "dataSources": {
+            "mainService": {
+                "uri": "/sap/opu/odata/sap/ZHR_VACATION_SRV/",
+                "type": "OData",
+                "settings": {
+                    "odataVersion": "2.0"
+                }
+            }
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.ui5": {
+        "rootView": {
+            "viewName": "com.vacaciones.app.view.App",
+            "type": "XML",
+            "id": "app"
+        },
+        "dependencies": {
+            "minUI5Version": "1.60.0",
+            "libs": {
+                "sap.ui.core": {},
+                "sap.m": {},
+                "sap.ui.layout": {},
+                "sap.f": {},
+                "sap.ui.unified": {}
+            }
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "com.vacaciones.app.i18n.i18n"
+                }
+            },
+            "": {
+                "dataSource": "mainService",
+                "preload": true
+            }
+        },
+        "routing": {
+            "config": {
+                "routerClass": "sap.m.routing.Router",
+                "viewType": "XML",
+                "viewPath": "com.vacaciones.app.view",
+                "controlId": "app",
+                "controlAggregation": "pages",
+                "transition": "slide",
+                "bypassed": {
+                    "target": "notFound"
+                }
+            },
+            "routes": [
+                {
+                    "pattern": "",
+                    "name": "calendar",
+                    "target": "calendar"
+                },
+                {
+                    "pattern": "request",
+                    "name": "request",
+                    "target": "request"
+                },
+                {
+                    "pattern": "team",
+                    "name": "team",
+                    "target": "team"
+                },
+                {
+                    "pattern": "balance",
+                    "name": "balance",
+                    "target": "balance"
+                },
+                {
+                    "pattern": "admin",
+                    "name": "admin",
+                    "target": "admin"
+                }
+            ],
+            "targets": {
+                "calendar": {
+                    "viewName": "Calendar",
+                    "viewLevel": 1
+                },
+                "request": {
+                    "viewName": "Request",
+                    "viewLevel": 2
+                },
+                "team": {
+                    "viewName": "Team",
+                    "viewLevel": 1
+                },
+                "balance": {
+                    "viewName": "Balance",
+                    "viewLevel": 1
+                },
+                "admin": {
+                    "viewName": "Admin",
+                    "viewLevel": 1
+                },
+                "notFound": {
+                    "viewName": "NotFound",
+                    "viewLevel": 3
+                }
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        }
+    }
+}

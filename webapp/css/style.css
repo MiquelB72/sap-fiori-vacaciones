@@ -1,0 +1,100 @@
+/* Estilos generales */
+.sapMPageHeader {
+    background-color: #1D4F91;
+}
+
+.sapMTitle {
+    color: #333333;
+}
+
+/* Estilos para el calendario */
+.sapUiCalItem.sapUiCalItemSel {
+    background-color: #4CAF50;
+    color: #FFFFFF;
+}
+
+.sapUiCalItemType01 {
+    background-color: #4CAF50;
+    color: #FFFFFF;
+}
+
+.sapUiCalItemType02 {
+    background-color: #FFC107;
+    color: #333333;
+}
+
+.sapUiCalItemType03 {
+    background-color: #F44336;
+    color: #FFFFFF;
+}
+
+.sapUiCalItemType04 {
+    background-color: #2196F3;
+    color: #FFFFFF;
+}
+
+/* Estilos para contadores */
+.sapMObjStatusSuccess {
+    color: #4CAF50;
+}
+
+.sapMObjStatusWarning {
+    color: #FFC107;
+}
+
+.sapMObjStatusError {
+    color: #F44336;
+}
+
+.sapMObjStatusInformation {
+    color: #2196F3;
+}
+
+/* Estilos para perfil de usuario */
+.sapMAvatar {
+    border: 2px solid #1D4F91;
+}
+
+/* Estilos para formularios */
+.sapMLabel.sapMLabelRequired::before {
+    color: #F44336;
+}
+
+/* Estilos para botones */
+.sapMBtnInner.sapMBtnEmphasized {
+    background-color: #1D4F91;
+    border-color: #1D4F91;
+}
+
+.sapMBtnInner.sapMBtnEmphasized:hover {
+    background-color: #2C5EA9;
+    border-color: #2C5EA9;
+}
+
+/* Estilos para tipos de ausencia */
+.absenceType-VAC {
+    border-left: 4px solid #4CAF50;
+}
+
+.absenceType-MUD {
+    border-left: 4px solid #FFC107;
+}
+
+.absenceType-BAJ {
+    border-left: 4px solid #F44336;
+}
+
+.absenceType-SOB {
+    border-left: 4px solid #2196F3;
+}
+
+/* Estilos responsivos */
+@media (max-width: 600px) {
+    .sapMPageHeader {
+        padding: 0.5rem;
+    }
+    
+    .sapMITH {
+        display: none;
+    }
+}
