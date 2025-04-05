@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Vacaciones - SAP Fiori</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap">
+</head>
+<body>
+    <div class="app-container">
+        <header class="app-header">
+            <div class="header-left">
+                <button class="menu-button" id="menuButton">
+                    <span class="material-icons">menu</span>
+                </button>
+                <div class="logo">
+                    <span class="material-icons">event_available</span>
+                    <h1>Gestión de Vacaciones</h1>
+                </div>
+            </div>
+            <div class="header-right">
+                <button class="icon-button">
+                    <span class="material-icons">search</span>
+                </button>
+                <button class="icon-button">
+                    <span class="material-icons">settings</span>
+                </button>
+                <button class="icon-button">
+                    <span class="material-icons">help_outline</span>
+                </button>
+                <button class="icon-button">
+                    <span class="material-icons">notifications</span>
+                </button>
+                <div class="user-profile">
+                    <img src="img/profile.jpg" alt="Perfil de usuario">
+                </div>
+            </div>
+        </header>
+
+        <div class="app-content">
+            <nav class="sidebar" id="sidebar">
+                <ul class="nav-menu">
+                    <li class="nav-item active">
+                        <a href="#" class="nav-link">
+                            <span class="material-icons">home</span>
+                            <span>Inicio</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <span class="material-icons">calendar_today</span>
+                            <span>Mi calendario</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <span class="material-icons">people</span>
+                            <span>Mi equipo</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <span class="material-icons">account_balance_wallet</span>
+                            <span>Saldos</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <span class="material-icons">description</span>
+                            <span>Solicitudes</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <span class="material-icons">bar_chart</span>
+                            <span>Informes</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <span class="material-icons">admin_panel_settings</span>
+                            <span>Administración</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <main class="main-content">
+                <div class="tabs-container">
+                    <div class="tabs">
+                        <button class="tab-button active" data-tab="ausencias">Ausencias</button>
+                        <button class="tab-button" data-tab="mi-calendario">Mi calendario</button>
+                        <button class="tab-button" data-tab="mi-equipo">Mi equipo</button>
+                        <button class="tab-button" data-tab="saldos">Saldos</button>
+                        <button class="tab-button" data-tab="solicitudes">Solicitudes</button>
+                        <button class="tab-button" data-tab="informes">Informes</button>
+                        <button class="tab-button" data-tab="administracion">Administración</button>
+                    </div>
+                </div>
+
+                <div class="tab-content active" id="ausencias">
+                    <div class="user-profile-card">
+                        <div class="profile-header">
+                            <div class="profile-image">
+                                <img src="img/profile.jpg" alt="Susana Navarro Ruiz">
+                            </div>
+                            <div class="profile-info">
+                                <h2>Susana Navarro Ruiz</h2>
+                                <p>Sales Spain - Sales Development - Madrid</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="counters">
+                        <div class="counter">
+                            <span class="counter-value">12d</span>
+                            <span class="counter-label">Disponible</span>
+                        </div>
+                        <div class="counter">
+                            <span class="counter-value">23d</span>
+                            <span class="counter-label">Total</span>
+                        </div>
+                        <div class="counter">
+                            <span class="counter-value">3d</span>
+                            <span class="counter-label">Disfrutados</span>
+                        </div>
+                        <div class="counter">
+                            <span class="counter-value">0d</span>
+                            <span class="counter-label">Pendientes</span>
+                        </div>
+                    </div>
+
+                    <div class="calendar-container">
+                        <div class="calendar-header">
+                            <div class="calendar-navigation">
+                                <button class="icon-button">
+                                    <span class="material-icons">chevron_left</span>
+                                </button>
+                                <h3>2024</h3>
+                                <button class="icon-button">
+                                    <span class="material-icons">chevron_right</span>
+                                </button>
+                            </div>
+                            <div class="calendar-view-options">
+                                <button class="view-button active">
+                                    <span class="material-icons">calendar_view_month</span>
+                                </button>
+                                <button class="view-button">
+                                    <span class="material-icons">calendar_view_week</span>
+                                </button>
+                                <button class="view-button">
+                                    <span class="material-icons">calendar_view_day</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="calendar-dates">
+                            <div class="month-container">
+                                <h4>Enero</h4>
+                                <div class="month-grid">
+                                    <div class="day-header">L</div>
+                                    <div class="day-header">M</div>
+                                    <div class="day-header">X</div>
+                                    <div class="day-header">J</div>
+                                    <div class="day-header">V</div>
+                                    <div class="day-header">S</div>
+                                    <div class="day-header">D</div>
+                                    
+                                    <div class="day">1</div>
+                                    <div class="day">2</div>
+                                    <div class="day">3</div>
+                                    <div class="day">4</div>
+                                    <div class="day">5</div>
+                                    <div class="day">6</div>
+                                    <div class="day">7</div>
+                                    <div class="day">8</div>
+                                    <div class="day">9</div>
+                                    <div class="day">10</div>
+                                    <div class="day">11</div>
+                                    <div class="day">12</div>
+                                    <div class="day selected">13</div>
+                                    <div class="day selected">14</div>
+                                    <div class="day selected">15</div>
+                                    <div class="day">16</div>
+                                    <div class="day">17</div>
+                                    <div class="day">18</div>
+                                    <div class="day">19</div>
+                                    <div class="day">20</div>
+                                    <div class="day">21</div>
+                                    <div class="day">22</div>
+                                    <div class="day">23</div>
+                                    <div class="day">24</div>
+                                    <div class="day">25</div>
+                                    <div class="day">26</div>
+                                    <div class="day">27</div>
+                                    <div class="day">28</div>
+                                    <div class="day">29</div>
+                                    <div class="day">30</div>
+                                    <div class="day">31</div>
+                                </div>
+                            </div>
+
+                            <div class="month-container">
+                                <h4>Febrero</h4>
+                                <div class="month-grid">
+                                    <div class="day-header">L</div>
+                                    <div class="day-header">M</div>
+                                    <div class="day-header">X</div>
+                                    <div class="day-header">J</div>
+                                    <div class="day-header">V</div>
+                                    <div class="day-header">S</div>
+                                    <div class="day-header">D</div>
+                                    
+                                    <div class="day"></div>
+                                    <div class="day"></div>
+                                    <div class="day"></div>
+                                    <div class="day">1</div>
+                                    <div class="day">2</div>
+                                    <div class="day">3</div>
+                                    <div class="day">4</div>
+                                    <div class="day">5</div>
+                                    <div class="day">6</div>
+                                    <div class="day">7</div>
+                                    <div class="day">8</div>
+                                    <div class="day">9</div>
+                                    <div class="day">10</div>
+                                    <div class="day">11</div>
+                                    <div class="day">12</div>
+                                    <div class="day">13</div>
+                                    <div class="day">14</div>
+                                    <div class="day">15</div>
+                                    <div class="day">16</div>
+                                    <div class="day">17</div>
+                                    <div class="day">18</div>
+                                    <div class="day">19</div>
+                                    <div class="day">20</div>
+                                    <div class="day">21</div>
+                                    <div class="day">22</div>
+                                    <div class="day">23</div>
+                                    <div class="day">24</div>
+                                    <div class="day">25</div>
+                                    <div class="day">26</div>
+                                    <div class="day">27</div>
+                                    <div class="day">28</div>
+                                    <div class="day">29</div>
+                                </div>
+                            </div>
+
+                            <div class="month-container">
+                                <h4>Marzo</h4>
+                                <div class="month-grid">
+                                    <div class="day-header">L</div>
+                                    <div class="day-header">M</div>
+                                    <div class="day-header">X</div>
+                                    <div class="day-header">J</div>
+                                    <div class="day-header">V</div>
+                                    <div class="day-header">S</div>
+                                    <div class="day-header">D</div>
+                                    
+                                    <div class="day"></div>
+                                    <div class="day"></div>
+                                    <div class="day"></div>
+                                    <div class="day"></div>
+                                    <div class="day">1</div>
+                                    <div class="day">2</div>
+                                    <div class="day">3</div>
+                                    <div class="day">4</div>
+                                    <div class="day vacation">5</div>
+                                    <div class="day vacation">6</div>
+                                    <div class="day vacation">7</div>
+                                    <div class="day vacation">8</div>
+                                    <div class="day">9</div>
+                                    <div class="day">10</div>
+                                    <div class="day">11</div>
+                                    <div class="day">12</div>
+                                    <div class="day">13</div>
+                                    <div class="day">14</div>
+                                    <div class="day">15</div>
+                                    <div class="day">16</div>
+                                    <div class="day">17</div>
+                                    <div class="day">18</div>
+                                    <div class="day">19</div>
+                                    <div class="day">20</div>
+                                    <div class="day">21</div>
+                                    <div class="day">22</div>
+                                    <div class="day">23</div>
+                                    <div class="day">24</div>
+                                    <div class="day">25</div>
+                                    <div class="day">26</div>
+                                    <div class="day">27</div>
+                                    <div class="day">28</div>
+                                    <div class="day">29</div>
+                                    <div class="day">30</div>
+                                    <div class="day">31</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="absence-types">
+                        <h3>Ausencias por tipo</h3>
+                        <ul class="absence-list">
+                            <li class="absence-item">
+                                <div class="absence-checkbox">
+                                    <input type="checkbox" id="mudanza" checked>
+                                    <label for="mudanza">Mudanza</label>
+                                </div>
+                                <span class="absence-count">2</span>
+                            </li>
+                            <li class="absence-item">
+                                <div class="absence-checkbox">
+                                    <input type="checkbox" id="baja" checked>
+                                    <label for="baja">Baja (leve)</label>
+                                </div>
+                                <span class="absence-count">4</span>
+                            </li>
+                            <li class="absence-item">
+                                <div class="absence-checkbox">
+                                    <input type="checkbox" id="vacaciones" checked>
+                                    <label for="vacaciones">Vacaciones</label>
+                                </div>
+                                <span class="absence-count">12</span>
+                            </li>
+                            <li class="absence-item">
+                                <div class="absence-checkbox">
+                                    <input type="checkbox" id="sobretiempo" checked>
+                                    <label for="sobretiempo">Sobre tiempo</label>
+                                </div>
+                                <span class="absence-count">6</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="calendar-integration">
+                        <h3>Convenio y calendario</h3>
+                        <ul class="integration-list">
+                            <li class="integration-item">
+                                <div class="integration-checkbox">
+                                    <input type="checkbox" id="consultoria" checked>
+                                    <label for="consultoria">Convenio Consultoría</label>
+                                </div>
+                            </li>
+                            <li class="integration-item">
+                                <div class="integration-checkbox">
+                                    <input type="checkbox" id="ciudadreal" checked>
+                                    <label for="ciudadreal">Ciudad Real</label>
+                                </div>
+                            </li>
+                        </ul>
+                        <p class="integration-note">
+                            Añade tu calendario a otras herramientas de calendario como Outlook, Google, Apple, etc.
+                        </p>
+                        <button class="link-button">
+                            <span class="material-icons">link</span>
+                            Enlace de iCal
+                        </button>
+                    </div>
+                </div>
+
+                <div class="tab-content" id="mi-calendario">
+                    <!-- Contenido de Mi calendario -->
+                </div>
+
+                <div class="tab-content" id="mi-equipo">
+                    <!-- Contenido de Mi equipo -->
+                </div>
+
+                <div class="tab-content" id="saldos">
+                    <!-- Contenido de Saldos -->
+                </div>
+
+                <div class="tab-content" id="solicitudes">
+                    <!-- Contenido de Solicitudes -->
+                </div>
+
+                <div class="tab-content" id="informes">
+                    <!-- Contenido de Informes -->
+                </div>
+
+                <div class="tab-content" id="administracion">
+                    <!-- Contenido de Administración -->
+                </div>
+            </main>
+        </div>
+
+        <footer class="app-footer">
+            <div class="actions">
+                <button class="primary-button">
+                    <span class="material-icons">add</span>
+                    Solicitar ausencia
+                </button>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Modal de solicitud de ausencia -->
+    <div class="modal" id="requestModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Solicitar ausencia</h2>
+                <button class="close-button" id="closeModal">
+                    <span class="material-icons">close</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="absenceForm">
+                    <div class="form-group">
+                        <label for="absenceType">Tipo de ausencia</label>
+                        <select id="absenceType" required>
+                            <option value="">Seleccione un tipo</option>
+                            <option value="vacation">Vacaciones</option>
+                            <option value="moving">Mudanza</option>
+                            <option value="sick">Baja (leve)</option>
+                            <option value="overtime">Sobre tiempo</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="startDate">Fecha de inicio</label>
+                        <input type="date" id="startDate" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="endDate">Fecha de fin</label>
+                        <input type="date" id="endDate" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="comments">Comentarios</label>
+                        <textarea id="comments" rows="3"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="attachment">Adjuntar documento</label>
+                        <input type="file" id="attachment">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="secondary-button" id="cancelRequest">Cancelar</button>
+                <button class="primary-button" id="submitRequest">Enviar solicitud</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
