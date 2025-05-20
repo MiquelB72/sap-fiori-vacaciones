@@ -41,12 +41,22 @@ sap.ui.define([
             // Set the model
             this.setModel(oModel, "appModel");
 
-            // Initialize the OData model
+            // Initialize configuration
+            var oConfigModel = com.vacaciones.app.model.Config.initialize();
+            // Set configuration model
+            this.setModel(oConfigModel, "config");
+
+            // Initialize the OData model using configuration
+            var sServiceUrl = com.vacaciones.app.model.Config.getServiceUrl("vacationService");
             var oODataModel = new sap.ui.model.odata.v2.ODataModel(
-                "/sap/opu/odata/sap/ZHR_VACATION_SRV/",
+                sServiceUrl,
                 {
                     json: true,
-                    useBatch: false
+                    useBatch: false,
+                    headers: {
+                        "X-Requested-With": "XMLHttpRequest",
+                        "Content-Type": "application/json"
+                    }
                 }
             );
             

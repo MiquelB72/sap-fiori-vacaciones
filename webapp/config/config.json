@@ -1,0 +1,22 @@
+{
+    "services": {
+        "vacationService": {
+            "baseUrl": "{{sapBaseUrl}}",
+            "servicePath": "/sap/opu/odata/sap/ZHR_VACATION_SRV/",
+            "sapClient": "{{sapClient}}",
+            "language": "{{language}}",
+            "crossOrigin": false,
+            "useMockData": false
+        }
+    },
+    "ui": {
+        "theme": "{{theme}}",
+        "language": "{{language}}",
+        "contentDensity": "{{contentDensity}}"
+    },
+    "security": {
+        "tokenRefreshInterval": 300000, // 5 minutes in milliseconds
+        "tokenRefreshThreshold": 300000, // 5 minutes in milliseconds
+        "tokenRefreshUrl": "{{tokenRefreshUrl}}"
+    }
+}

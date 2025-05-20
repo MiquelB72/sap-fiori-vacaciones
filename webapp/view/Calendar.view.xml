@@ -5,7 +5,128 @@
     xmlns:unified="sap.ui.unified"
     xmlns:core="sap.ui.core"
     xmlns:layout="sap.ui.layout"
-    height="100%">
+    displayBlock="true">
+    <Page
+        showHeader="false"
+        enableScrolling="true">
+        <content>
+            <layout:FixFlex>
+                <layout:fixContent>
+                    <VBox>
+                        <HBox justifyContent="SpaceBetween" alignItems="Center">
+                            <VBox>
+                                <Avatar
+                                    src="{/employeeData/photo}"
+                                    displaySize="L"
+                                    class="sapUiSmallMarginEnd"/>
+                                <ObjectIdentifier
+                                    title="{/employeeData/firstName} {/employeeData/lastName}"
+                                    text="{/employeeData/department} - {/employeeData/position}"/>
+                            </VBox>
+                            <HBox>
+                                <SegmentedButton
+                                    selectedKey="{viewModel>/calendarViewType}"
+                                    selectionChange=".onCalendarViewTypeChange">
+                                    <items>
+                                        <SegmentedButtonItem
+                                            icon="sap-icon://calendar"
+                                            key="Day"
+                                            tooltip="{i18n>dayView}"/>
+                                        <SegmentedButtonItem
+                                            icon="sap-icon://calendar"
+                                            key="Week"
+                                            tooltip="{i18n>weekView}"/>
+                                        <SegmentedButtonItem
+                                            icon="sap-icon://calendar"
+                                            key="Month"
+                                            tooltip="{i18n>monthView}"/>
+                                        <SegmentedButtonItem
+                                            icon="sap-icon://calendar"
+                                            key="Year"
+                                            tooltip="{i18n>yearView}"/>
+                                    </items>
+                                </SegmentedButton>
+                                <Button
+                                    icon="sap-icon://arrow-left"
+                                    press=".onPreviousPeriod"
+                                    tooltip="{i18n>previousPeriod}"
+                                    class="sapUiTinyMarginBegin"/>
+                                <Text
+                                    text="{viewModel>/currentPeriodText}"
+                                    class="sapUiTinyMarginBegin sapUiTinyMarginEnd"/>
+                                <Button
+                                    icon="sap-icon://arrow-right"
+                                    press=".onNextPeriod"
+                                    tooltip="{i18n>nextPeriod}"/>
+                                <Button
+                                    icon="sap-icon://today"
+                                    press=".onToday"
+                                    tooltip="{i18n>goToToday}"
+                                    class="sapUiTinyMarginBegin"/>
+                            </HBox>
+                            <VBox>
+                                <Button
+                                    text="{i18n>actions}"
+                                    type="Transparent"
+                                    press=".onActionsPress"
+                                    class="sapUiTinyMarginBottom"/>
+                                <Button
+                                    icon="sap-icon://print"
+                                    press=".onPrint"
+                                    tooltip="{i18n>printCalendar}"
+                                    class="sapUiTinyMarginBottom"/>
+                                <Button
+                                    icon="sap-icon://refresh"
+                                    press=".onRefresh"
+                                    tooltip="{i18n>refreshCalendar}"/>
+                            </VBox>
+                        </HBox>
+                    </VBox>
+                </layout:fixContent>
+                <layout:flexContent>
+                    <unified:Calendar
+                        id="calendar"
+                        startDate="{viewModel>/startDate}"
+                        viewKey="{viewModel>/calendarViewType}"
+                        showWeekNumbers="true">
+                        <unified:rows>
+                            <unified:CalendarRow
+                                title="{title}"
+                                text="{text}"
+                                icon="{icon}"/>
+                        </unified:rows>
+                    </unified:Calendar>
+                </layout:flexContent>
+            </layout:FixFlex>
+        </content>
+        <footer>
+            <Toolbar>
+                <Title text="{i18n>absencesByType}" level="H3"/>
+                <ToolbarSpacer/>
+                <List
+                    items="{/absenceTypes}"
+                    mode="MultiSelect"
+                    includeItemInSelection="true"
+                    selectionChange=".onAbsenceTypeFilterChange">
+                    <StandardListItem
+                        title="{description}"
+                        info="{count}"
+                        infoState="Information"
+                        type="Active">
+                        <customData>
+                            <core:CustomData
+                                key="color"
+                                value="{color}"/>
+                            <core:CustomData
+                                key="tooltip"
+                                value="{tooltip}"/>
+                        </customData>
+                    </StandardListItem>
+                </List>
+            </Toolbar>
+        </footer>
+    </Page>
+</mvc:View>
     <Page
         showHeader="false"
         enableScrolling="true">
@@ -58,19 +179,35 @@
                                     icon="sap-icon://arrow-right"
                                     press=".onNextPeriod"
                                     tooltip="{i18n>nextPeriod}"/>
+                                <Button
+                                    icon="sap-icon://today"
+                                    press=".onToday"
+                                    tooltip="{i18n>goToToday}"
+                                    class="sapUiTinyMarginBegin"/>
                             </HBox>
-                            <Button
-                                text="{i18n>actions}"
-                                type="Transparent"
-                                press=".onActionsPress"/>
+                            <VBox>
+                                <Button
+                                    text="{i18n>actions}"
+                                    type="Transparent"
+                                    press=".onActionsPress"
+                                    class="sapUiTinyMarginBottom"/>
+                                <Button
+                                    icon="sap-icon://print"
+                                    press=".onPrint"
+                                    tooltip="{i18n>printCalendar}"
+                                    class="sapUiTinyMarginBottom"/>
+                                <Button
+                                    icon="sap-icon://refresh"
+                                    press=".onRefresh"
+                                    tooltip="{i18n>refreshCalendar}"/>
+                            </VBox>
                         </HBox>
                     </VBox>
                 </layout:fixContent>
                 <layout:flexContent>
-                    <unified:PlanningCalendar
+                    <unified:Calendar
                         id="calendar"
                         startDate="{viewModel>/startDate}"
-                        rows="{/absenceRequests}"
                         viewKey="{viewModel>/calendarViewType}"
                         appointmentSelect=".onAppointmentSelect"
                         intervalSelect=".onIntervalSelect"
@@ -78,13 +215,30 @@
                         showRowHeaders="true"
                         showWeekNumbers="true">
                         <unified:rows>
-                            <unified:PlanningCalendarRow
+                            <unified:CalendarRow
+                                title="{title}"
+                                text="{text}"
+                                icon="{icon}">
+                                <unified:appointments>
+                                    <unified:Appointment
+                                        startDate="{startDate}"
+                                        endDate="{endDate}"
+                                        title="{title}"
+                                        text="{text}"
+                                        type="{type}"
+                                        icon="{icon}"/>
+                                </unified:appointments>
+                            </unified:CalendarRow>
+                        </unified:rows>
+                    </unified:Calendar>
+                        <unified:rows>
+                            <unified:Row
                                 title="{title}"
                                 text="{text}"
                                 icon="{icon}"
                                 appointments="{appointments}">
                                 <unified:appointments>
-                                    <unified:CalendarAppointment
+                                    <unified:Appointment
                                         startDate="{startDate}"
                                         endDate="{endDate}"
                                         title="{title}"
@@ -116,6 +270,9 @@
                             <core:CustomData
                                 key="color"
                                 value="{color}"/>
+                            <core:CustomData
+                                key="tooltip"
+                                value="{tooltip}"/>
                         </customData>
                     </StandardListItem>
                 </List>

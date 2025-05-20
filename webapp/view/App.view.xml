@@ -30,31 +30,47 @@
                             <items>
                                 <IconTabFilter
                                     key="absences"
-                                    text="{i18n>tabAbsences}"/>
+                                    text="{i18n>tabAbsences}"
+                                    icon="sap-icon://calendar"/>
                                 <IconTabFilter
                                     key="calendar"
-                                    text="{i18n>tabCalendar}"/>
+                                    text="{i18n>tabCalendar}"
+                                    icon="sap-icon://calendar"/>
                                 <IconTabFilter
                                     key="team"
-                                    text="{i18n>tabTeam}"/>
+                                    text="{i18n>tabTeam}"
+                                    icon="sap-icon://team"/>
                                 <IconTabFilter
                                     key="balance"
-                                    text="{i18n>tabBalance}"/>
+                                    text="{i18n>tabBalance}"
+                                    icon="sap-icon://balance"/>
                                 <IconTabFilter
                                     key="requests"
-                                    text="{i18n>tabRequests}"/>
+                                    text="{i18n>tabRequests}"
+                                    icon="sap-icon://request"/>
                                 <IconTabFilter
                                     key="reports"
-                                    text="{i18n>tabReports}"/>
+                                    text="{i18n>tabReports}"
+                                    icon="sap-icon://report"/>
                                 <IconTabFilter
                                     key="admin"
-                                    text="{i18n>tabAdmin}"/>
+                                    text="{i18n>tabAdmin}"
+                                    icon="sap-icon://admin"/>
                             </items>
                         </IconTabHeader>
                         <ToolbarSpacer/>
-                        <SearchField width="auto" search=".onSearch"/>
-                        <Button icon="sap-icon://settings" press=".onSettingsPress"/>
-                        <Button icon="sap-icon://person-placeholder" press=".onUserPress"/>
+                        <SearchField 
+                            width="auto" 
+                            search=".onSearch"
+                            placeholder="{i18n>searchPlaceholder}"/>
+                        <Button 
+                            icon="sap-icon://settings" 
+                            press=".onSettingsPress"
+                            tooltip="{i18n>settingsTooltip}"/>
+                        <Button 
+                            icon="sap-icon://person-placeholder" 
+                            press=".onUserPress"
+                            tooltip="{i18n>profileTooltip}"/>
                     </Toolbar>
                 </customHeader>
                 <content>
@@ -69,28 +85,41 @@
                             title="{i18n>availableDays}"
                             text="{/counters/available}d"
                             state="Success"
-                            icon="sap-icon://calendar"/>
+                            icon="sap-icon://calendar"
+                            tooltip="{i18n>availableDaysTooltip}"/>
                         <ObjectStatus
                             title="{i18n>totalDays}"
                             text="{/counters/total}d"
                             state="Information"
-                            icon="sap-icon://calendar"/>
+                            icon="sap-icon://calendar"
+                            tooltip="{i18n>totalDaysTooltip}"/>
                         <ObjectStatus
                             title="{i18n>usedDays}"
                             text="{/counters/used}d"
                             state="Warning"
-                            icon="sap-icon://calendar"/>
+                            icon="sap-icon://calendar"
+                            tooltip="{i18n>usedDaysTooltip}"/>
                         <ObjectStatus
                             title="{i18n>pendingDays}"
                             text="{/counters/pending}d"
                             state="Error"
-                            icon="sap-icon://calendar"/>
+                            icon="sap-icon://calendar"
+                            tooltip="{i18n>pendingDaysTooltip}"/>
                         <ToolbarSpacer/>
                         <Button
                             type="Emphasized"
                             text="{i18n>requestAbsence}"
                             icon="sap-icon://add"
-                            press=".onRequestAbsence"/>
+                            press=".onRequestAbsence"
+                            tooltip="{i18n>requestAbsenceTooltip}"/>
+                        <Button
+                            icon="sap-icon://refresh"
+                            press=".onRefresh"
+                            tooltip="{i18n>refreshTooltip}"/>
+                        <Button
+                            icon="sap-icon://home"
+                            press=".onHome"
+                            tooltip="{i18n>homeTooltip}"/>
                     </Toolbar>
                 </footer>
             </Page>
