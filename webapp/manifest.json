@@ -92,6 +92,11 @@
                     "pattern": "admin",
                     "name": "admin",
                     "target": "admin"
+                },
+                {
+                    "pattern": "notFound",
+                    "name": "notFound",
+                    "target": "notFound"
                 }
             ],
             "targets": {
@@ -101,7 +106,7 @@
                 },
                 "request": {
                     "viewName": "Request",
-                    "viewLevel": 2
+                    "viewLevel": 1
                 },
                 "team": {
                     "viewName": "Team",

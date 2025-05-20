@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mvc:View
+    controllerName="com.vacaciones.app.controller.NotFound"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    displayBlock="true">
+    <Page
+        title="{i18n>notFoundTitle}"
+        showNavButton="true"
+        navButtonPress=".onNavBack">
+        <content>
+            <VBox
+                alignItems="Center"
+                justifyContent="Center"
+                class="sapUiSmallMargin">
+                <ObjectStatus
+                    title="{i18n>notFoundMessage}"
+                    state="Error"/>
+                <Button
+                    text="{i18n>notFoundBackButton}"
+                    press=".onNavBack"/>
+            </VBox>
+        </content>
+    </Page>
+</mvc:View>
